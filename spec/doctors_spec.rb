@@ -29,4 +29,12 @@ describe(Doctor) do
     end
   end
 
+  describe("#id") do
+    it("returns a doctor by their id") do
+      doctor1 = Doctor.new(:name => "Dr. Anderson", :id => nil, :specialty => "gynecologist")
+      doctor1.save()
+      expect(doctor1.id()).to(be_an_instance_of(Integer))
+    end
+  end
+
 end
