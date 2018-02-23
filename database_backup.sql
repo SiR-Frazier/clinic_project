@@ -123,6 +123,8 @@ ALTER TABLE ONLY patients ALTER COLUMN id SET DEFAULT nextval('patients_id_seq':
 --
 
 COPY doctors (id, name, specialty) FROM stdin;
+1	Dr. Stephenson	oncology
+2	Dr. Wayne	dentistry
 \.
 
 
@@ -138,6 +140,8 @@ SELECT pg_catalog.setval('doctors_id_seq', 1, false);
 --
 
 COPY patients (id, name, dob, department_needed, doctor_id) FROM stdin;
+1	Jessica Jones	1991-04-18 00:00:00	chiropractic	\N
+2	Ryan Williams	1972-04-12 00:00:00	dentistry	\N
 \.
 
 

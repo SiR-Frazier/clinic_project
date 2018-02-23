@@ -31,9 +31,18 @@ describe(Doctor) do
 
   describe("#id") do
     it("returns a doctor by their id") do
-      doctor1 = Doctor.new(:name => "Dr. Anderson", :id => nil, :specialty => "gynecologist")
+      doctor1 = Doctor.new({:name => "Dr. Anderson", :id => nil, :specialty => "gynecologist"})
       doctor1.save()
       expect(doctor1.id()).to(be_an_instance_of(Integer))
+    end
+  end
+
+  describe("#patients") do
+    it("returns a list of the patients for of that doctor") do
+      doctor1 = Doctor.new({:name => "Dr. Jones", :id => nil, :specialty => "cardiology"})
+      patient1 = Patient.new({:name => "Allison", :id => nil, :dob => "1991-06-11", :department_needed => "cardiology", :doctor_id => doctor1.id()})
+      patient2 = Patient.new({:name => "Richard", :id => nil, :dob => "1982-09-01", :department_needed => "cardiology", :doctor_id => doctor1.id()})
+      expect(doctor1.patients()).to(eq([patient1,patient2]))
     end
   end
 
